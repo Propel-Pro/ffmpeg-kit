@@ -89,7 +89,7 @@ APP_STL := ${APP_STL}
 
 APP_PLATFORM := android-${API}
 
-APP_CFLAGS := -O3 -DANDROID ${LTS_BUILD_FLAG}${BUILD_DATE} -Wall -Wno-deprecated-declarations -Wno-pointer-sign -Wno-switch -Wno-unused-result -Wno-unused-variable
+APP_CFLAGS := -O3 -DANDROID ${LTS_BUILD_FLAG}${BUILD_DATE} -Wall -Wno-deprecated-declarations -Wno-single-bit-bitfield-constant-conversion -Wno-pointer-sign -Wno-switch -Wno-unused-result -Wno-unused-variable
 
 APP_LDFLAGS := -Wl,--hash-style=both
 EOF
@@ -315,7 +315,7 @@ get_app_specific_cflags() {
     APP_FLAGS=""
     ;;
   ffmpeg)
-    APP_FLAGS="-Wno-unused-function -DBIONIC_IOCTL_NO_SIGNEDNESS_OVERLOAD"
+    APP_FLAGS="-Wno-unused-function -Wno-single-bit-bitfield-constant-conversion -DBIONIC_IOCTL_NO_SIGNEDNESS_OVERLOAD"
     ;;
   gnutls)
     APP_FLAGS="-std=c99 -Wno-unused-function -D_GL_USE_STDLIB_ALLOC=1"
