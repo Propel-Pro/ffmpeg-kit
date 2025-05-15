@@ -34,7 +34,8 @@ while [[ $# -gt 0 ]]
 do
     case "$1" in
     android|Android)
-            ./android.sh "${args[@]}"
+            PATH=$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/darwin-x86_64/bin:$PATH \
+                ./android.sh "${args[@]}"
             ;;
         iOS|ios)
             ./ios.sh "${args[@]}"
