@@ -83,8 +83,9 @@ do
 
         #     enable_library "${ENABLED_LIBRARY}"
         #     ;;
-        # --rebuild)
-        #     ;;
+        --rebuild)
+            args+=(--rebuild)
+            ;;
         # --build)
         #     ;;
         -v | --version)

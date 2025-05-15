@@ -103,6 +103,11 @@ while [ ! $# -eq 0 ]; do
 
     reconf_library "${CONF_LIBRARY}"
     ;;
+  --rebuild)
+    BUILD_LIBRARY=$(echo $1 | sed -e 's/^--[A-Za-z]*-//g')
+
+    rebuild_library "${BUILD_LIBRARY}"
+    ;;
   --rebuild-*)
     BUILD_LIBRARY=$(echo $1 | sed -e 's/^--[A-Za-z]*-//g')
 
