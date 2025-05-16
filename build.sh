@@ -46,10 +46,11 @@ install_dependencies()
     echo "Installing dependencies..."
     if [[ "$os" == "Linux" ]]
     then
-        sudo apt-get install -y autoconf automake libtool pkg-config groff
+        sudo apt update
+        sudo apt install -y autoconf automake gettext libtool pkg-config groff
     elif [[ "$os" == "Darwin" ]]
     then
-        brew install autoconf automake libtool pkg-config groff
+        brew install autoconf automake gettext libtool pkg-config groff
     else
         echo "Unsupported OS: $os"
         exit 1
@@ -84,7 +85,7 @@ while [[ $# -gt 0 ]]
 do
     case "$1" in
     android|Android)
-            PATH=$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/darwin-x86_64/bin:$PATH \
+            PATH=/usr/local/Cellar/gettext/0.25/bin:$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/darwin-x86_64/bin:$PATH \
                 ./android.sh "${args[@]}"
             ;;
         iOS|ios)
