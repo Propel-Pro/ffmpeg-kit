@@ -102,9 +102,9 @@ get_library_source() {
     SOURCE_TYPE="TAG"
     ;;
   libiconv)
-    SOURCE_REPO_URL="https://github.com/arthenica/libiconv"
-    SOURCE_ID="v1.17"
-    SOURCE_TYPE="TAG"
+    SOURCE_REPO_URL="https://github.com/Propel-Pro/libiconv"
+    SOURCE_ID="lspector/fix-libiconv=build"
+    SOURCE_TYPE="COMMIT"
     ;;
   libilbc)
     SOURCE_REPO_URL="https://github.com/arthenica/libilbc"
