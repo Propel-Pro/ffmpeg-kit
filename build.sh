@@ -84,12 +84,10 @@ do
         #     DOWNLOAD_LIBRARY=$(echo $1 | sed -e 's/^--[A-Za-z]*-//g')
         #     redownload_library "${DOWNLOAD_LIBRARY}"
         #     ;;
-        # --full)
-        #     BUILD_FULL="1"
         #     ;;
-        # --enable-gpl)
-        #     export GPL_ENABLED="yes"
-        #     ;;
+        --enable-gpl)
+            args+=(--enable-gpl)
+            ;;
         # --enable-custom-library-*)
         #     CUSTOM_LIBRARY_OPTION_KEY=$(echo $1 | sed -e 's/^--enable-custom-//g;s/=.*$//g')
         #     CUSTOM_LIBRARY_OPTION_VALUE=$(echo $1 | sed -e 's/^--enable-custom-.*=//g')
@@ -158,11 +156,6 @@ do
 
         #     redownload_library "${DOWNLOAD_LIBRARY}"
         #     ;;
-        # --full)
-        #     BUILD_FULL="1"
-        #     ;;
-        # --enable-gpl)
-        #     export GPL_ENABLED="yes"
         #     ;;
         # --enable-custom-library-*)
         #     CUSTOM_LIBRARY_OPTION_KEY=$(echo $1 | sed -e 's/^--enable-custom-//g;s/=.*$//g')
