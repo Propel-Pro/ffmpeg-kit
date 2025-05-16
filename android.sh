@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Called: $0 $@"
+
 if [[ -z ${ANDROID_SDK_ROOT} ]]; then
   echo -e "\n(*) ANDROID_SDK_ROOT not defined\n"
   exit 1
