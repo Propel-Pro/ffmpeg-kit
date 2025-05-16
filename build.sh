@@ -2,11 +2,28 @@
 
 export ANDROID_SDK_ROOT=$HOME/android-r35.0.2
 export ANDROID_NDK_ROOT=$HOME/android-ndk-r26d
+export ANDROID_HOME=$ANDROID_SDK_ROOT
 
 show_help()
 {
     echo "Usage: $0 ..args.. platform"
     echo "\tplatform can be one of: Android, iOS"
+}
+
+install_dependencies()
+{
+    os=$(uname)
+    echo "Installing dependencies..."
+    if [[ "$os" == "Linux" ]]
+    then
+        sudo apt-get install -y autoconf automake libtool pkg-config groff
+    elif [[ "$os" == "Darwin" ]]
+    then
+        brew install autoconf automake libtool pkg-config groff
+    else
+        echo "Unsupported OS: $os"
+        exit 1
+    fi
 }
 
 if [[ $# -lt 1 ]]
@@ -26,6 +43,9 @@ then
     echo "Error: ANDROID_NDK_ROOT not set or invalid. Aborting..."
     exit -1
 fi
+
+# Ensure we've installed the dependencies needed for this script
+install_dependencies
 
 args=()
 
