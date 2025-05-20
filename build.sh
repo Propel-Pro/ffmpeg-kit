@@ -99,11 +99,176 @@ install_dependencies
 
 args=()
 
+# args+=("--enable-fribidi")
+# args+=("--enable-gmp")
+
+# args+=("--enable-fontconfig")
+# args+=("--enable-freetype")
+# args+=("--enable-gnutls")
+# args+=("--enable-lame")
+# args+=("--enable-libass")
+# args+=("--reconf-libiconv")
+# args+=("--enable-libiconv")
+# args+=("--enable-libtheora")
+# args+=("--enable-libvorbis")
+# args+=("--enable-libvpx")
+# args+=("--enable-libwebp")
+# args+=("--enable-libxml2")
+# args+=("--enable-opencore-amr")
+# args+=("--enable-shine")
+# args+=("--enable-speex")
+# args+=("--enable-dav1d")
+# args+=("--enable-kvazaar")
+# args+=("--enable-x264")
+# args+=("--enable-xvidcore")
+# args+=("--enable-x265")
+# args+=("--enable-libvidstab")
+# args+=("--enable-rubberband")
+# args+=("--enable-libilbc")
+# args+=("--enable-opus")
+# args+=("--enable-snappy")
+# args+=("--enable-soxr")
+# args+=("--enable-libaom")
+# args+=("--enable-chromaprint")
+# args+=("--enable-twolame")
+# args+=("--enable-sdl")
+# args+=("--enable-tesseract")
+# args+=("--enable-openh264")
+# args+=("--enable-vo-amrwbenc")
+# args+=("--enable-zimg")
+# args+=("--enable-openssl")
+# args+=("--enable-srt")
+# args+=("--enable-giflib")
+# args+=("--enable-jpeg")
+# args+=("--enable-libogg")
+# args+=("--enable-libpng")
+# args+=("--enable-libuuid")
+# args+=("--enable-nettle")
+# args+=("--enable-tiff")
+# args+=("--enable-expat")
+# args+=("--enable-libsndfile")
+# args+=("--enable-leptonica")
+# args+=("--enable-libsamplerate")
+# args+=("--enable-harfbuzz")
+# args+=("--enable-cpu-features")
+#   50)
+#     if [[ ${FFMPEG_KIT_BUILD_TYPE} == "android" ]]; then
+#       echo "android-zlib"
+#     elif [[ ${FFMPEG_KIT_BUILD_TYPE} == "ios" ]]; then
+#       echo "ios-zlib"
+#     elif [[ ${FFMPEG_KIT_BUILD_TYPE} == "linux" ]]; then
+#       echo "linux-zlib"
+#     elif [[ ${FFMPEG_KIT_BUILD_TYPE} == "macos" ]]; then
+#       echo "macos-zlib"
+#     elif [[ ${FFMPEG_KIT_BUILD_TYPE} == "tvos" ]]; then
+#       echo "tvos-zlib"
+#     fi
+#     ;;
+# args+=("--enable-linux-alsa")
+# args+=("--enable-android-media-codec")
+#   53)
+#     if [[ ${FFMPEG_KIT_BUILD_TYPE} == "ios" ]]; then
+#       echo "ios-audiotoolbox"
+#     elif [[ ${FFMPEG_KIT_BUILD_TYPE} == "macos" ]]; then
+#       echo "macos-audiotoolbox"
+#     elif [[ ${FFMPEG_KIT_BUILD_TYPE} == "tvos" ]]; then
+#       echo "tvos-audiotoolbox"
+#     fi
+#     ;;
+#   54)
+#     if [[ ${FFMPEG_KIT_BUILD_TYPE} == "ios" ]]; then
+#       echo "ios-bzip2"
+#     elif [[ ${FFMPEG_KIT_BUILD_TYPE} == "macos" ]]; then
+#       echo "macos-bzip2"
+#     elif [[ ${FFMPEG_KIT_BUILD_TYPE} == "tvos" ]]; then
+#       echo "tvos-bzip2"
+#     fi
+#     ;;
+#   55)
+#     if [[ ${FFMPEG_KIT_BUILD_TYPE} == "ios" ]]; then
+#       echo "ios-videotoolbox"
+#     elif [[ ${FFMPEG_KIT_BUILD_TYPE} == "macos" ]]; then
+#       echo "macos-videotoolbox"
+#     elif [[ ${FFMPEG_KIT_BUILD_TYPE} == "tvos" ]]; then
+#       echo "tvos-videotoolbox"
+#     fi
+#     ;;
+#   56)
+#     if [[ ${FFMPEG_KIT_BUILD_TYPE} == "ios" ]]; then
+#       echo "ios-avfoundation"
+#     elif [[ ${FFMPEG_KIT_BUILD_TYPE} == "macos" ]]; then
+#       echo "macos-avfoundation"
+#     fi
+#     ;;
+#   57)
+#     if [[ ${FFMPEG_KIT_BUILD_TYPE} == "ios" ]]; then
+#       echo "ios-libiconv"
+#     elif [[ ${FFMPEG_KIT_BUILD_TYPE} == "macos" ]]; then
+#       echo "macos-libiconv"
+#     elif [[ ${FFMPEG_KIT_BUILD_TYPE} == "tvos" ]]; then
+#       echo "tvos-libiconv"
+#     fi
+#     ;;
+#   58)
+#     if [[ ${FFMPEG_KIT_BUILD_TYPE} == "ios" ]]; then
+#       echo "ios-libuuid"
+#     elif [[ ${FFMPEG_KIT_BUILD_TYPE} == "macos" ]]; then
+#       echo "macos-libuuid"
+#     elif [[ ${FFMPEG_KIT_BUILD_TYPE} == "tvos" ]]; then
+#       echo "tvos-libuuid"
+#     fi
+#     ;;
+#   59)
+#     if [[ ${FFMPEG_KIT_BUILD_TYPE} == "macos" ]]; then
+#       echo "macos-coreimage"
+#     fi
+#     ;;
+#   60)
+#     if [[ ${FFMPEG_KIT_BUILD_TYPE} == "macos" ]]; then
+#       echo "macos-opencl"
+#     fi
+#     ;;
+#   61)
+#     if [[ ${FFMPEG_KIT_BUILD_TYPE} == "macos" ]]; then
+#       echo "macos-opengl"
+#     fi
+#     ;;
+# args+=("--enable-linux-fontconfig")
+# args+=("--enable-linux-freetype")
+# args+=("--enable-linux-fribidi")
+# args+=("--enable-linux-gmp")
+# args+=("--enable-linux-gnutls")
+# args+=("--enable-linux-lame")
+# args+=("--enable-linux-libass")
+# args+=("--enable-linux-libiconv")
+# args+=("--enable-linux-libtheora")
+# args+=("--enable-linux-libvorbis")
+# args+=("--enable-linux-libvpx")
+# args+=("--enable-linux-libwebp")
+# args+=("--enable-linux-libxml2")
+# args+=("--enable-linux-opencore-amr")
+# args+=("--enable-linux-shine")
+# args+=("--enable-linux-speex")
+# args+=("--enable-linux-opencl")
+# args+=("--enable-linux-xvidcore")
+# args+=("--enable-linux-x265")
+# args+=("--enable-linux-libvidstab")
+# args+=("--enable-linux-rubberband")
+# args+=("--enable-linux-v4l2")
+# args+=("--enable-linux-opus")
+# args+=("--enable-linux-snappy")
+# args+=("--enable-linux-soxr")
+# args+=("--enable-linux-twolame")
+# args+=("--enable-linux-sdl")
+# args+=("--enable-linux-tesseract")
+# args+=("--enable-linux-vaapi")
+# args+=("--enable-linux-vo-amrwbenc")
+
 rm -rf build.log
 while [[ $# -gt 0 ]]
 do
     case "$1" in
-    android|Android)
+        android|Android)
             PATH=/usr/local/Cellar/gettext/0.25/bin:$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/darwin-x86_64/bin:$PATH \
                 ./android.sh "${args[@]}"
             ;;
