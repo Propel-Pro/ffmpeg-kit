@@ -318,25 +318,25 @@ get_app_specific_cflags() {
     APP_FLAGS="-Wno-unused-function -Wno-single-bit-bitfield-constant-conversion -DBIONIC_IOCTL_NO_SIGNEDNESS_OVERLOAD"
     ;;
   gnutls)
-    APP_FLAGS="-std=c99 -Wno-unused-function -D_GL_USE_STDLIB_ALLOC=1"
+    APP_FLAGS="-std=c99 -Wno-unused-function -Wno-single-bit-bitfield-constant-conversion -D_GL_USE_STDLIB_ALLOC=1"
     ;;
   kvazaar)
-    APP_FLAGS="-std=gnu99 -Wno-unused-function"
+    APP_FLAGS="-std=gnu99 -Wno-unused-function -Wno-single-bit-bitfield-constant-conversion"
     ;;
   openh264)
-    APP_FLAGS="-std=gnu99 -Wno-unused-function -fstack-protector-all"
+    APP_FLAGS="-std=gnu99 -Wno-unused-function -Wno-single-bit-bitfield-constant-conversion -fstack-protector-all"
     ;;
   rubberband)
-    APP_FLAGS="-std=c99 -Wno-unused-function"
+    APP_FLAGS="-std=c99 -Wno-unused-function -Wno-single-bit-bitfield-constant-conversion"
     ;;
   libvpx | openssl | shine | srt)
-    APP_FLAGS="-Wno-unused-function"
+    APP_FLAGS="-Wno-unused-function -Wno-single-bit-bitfield-constant-conversion"
     ;;
   soxr | snappy | libwebp)
-    APP_FLAGS="-std=gnu99 -Wno-unused-function -DPIC"
+    APP_FLAGS="-std=gnu99 -Wno-unused-function  -Wno-single-bit-bitfield-constant-conversion -DPIC"
     ;;
   *)
-    APP_FLAGS="-std=c99 -Wno-unused-function"
+    APP_FLAGS="-std=c99 -Wno-unused-function -Wno-single-bit-bitfield-constant-conversion"
     ;;
   esac
 
@@ -1085,6 +1085,6 @@ build_android_lts_support() {
   LDFLAGS=$(get_ldflags ${LIB_NAME})
 
   # BUILD
-  "${CC}" ${CFLAGS} -Wno-unused-command-line-argument -c "${BASEDIR}"/android/ffmpeg-kit-android-lib/src/main/cpp/android_lts_support.c -o "${BASEDIR}"/android/ffmpeg-kit-android-lib/src/main/cpp/android_lts_support.o ${LDFLAGS} 1>>"${BASEDIR}"/build.log 2>&1
+  "${CC}" ${CFLAGS} -Wno-single-bit-bitfield-constant-conversion -Wno-unused-command-line-argument -c "${BASEDIR}"/android/ffmpeg-kit-android-lib/src/main/cpp/android_lts_support.c -o "${BASEDIR}"/android/ffmpeg-kit-android-lib/src/main/cpp/android_lts_support.o ${LDFLAGS} 1>>"${BASEDIR}"/build.log 2>&1
   "${AR}" rcs "${BASEDIR}"/android/ffmpeg-kit-android-lib/src/main/cpp/libandroidltssupport.a "${BASEDIR}"/android/ffmpeg-kit-android-lib/src/main/cpp/android_lts_support.o 1>>"${BASEDIR}"/build.log 2>&1
 }
