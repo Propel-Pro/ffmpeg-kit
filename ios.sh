@@ -262,6 +262,9 @@ for run_arch in {0..12}; do
     export SDK_PATH=$(get_sdk_path)
     export SDK_NAME=$(get_sdk_name)
 
+    echo "SDK_NAME = $SDK_NAME"
+    echo "SDK_PATH = $SDK_PATH"
+
     # EXECUTE MAIN BUILD SCRIPT
     . "${BASEDIR}"/scripts/main-ios.sh "${ENABLED_LIBRARIES[@]}"
 
