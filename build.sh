@@ -34,6 +34,25 @@ fi
 export LDFLAGS="-L/usr/local/opt/libiconv/lib"
 export CPPFLAGS="-I/usr/local/opt/libiconv/include"
 
+# For Apple Silicon Macs:
+# export ACLOCAL_PATH="/opt/homebrew/share/aclocal"
+
+# For Intel Macs:
+export ACLOCAL_PATH="/usr/local/share/aclocal"
+
+export CFLAGS="-Wno-incompatible-function-pointer-types $CFLAGS"
+export CXXFLAGS="-Wno-incompatible-function-pointer-types $CXXFLAGS"
+
+# export PERL5LIB=$(which perl)
+# export PERL5LIB=src/openssl/util/perl
+
+# Run this to fix the SDL build script
+fix_sdl_build()
+{
+    sed -i .bak -E 's/CFLAGS  = @BUILD_CFLAGS@$/\1 -Wno-incompatible-function-pointer-types/g' src/sdl/Makefile.in
+    sed -i .bak -E 's/EXTRA_CFLAGS  = @EXTRA_CFLAGS@$/\1 -Wno-incompatible-function-pointer-types/g' src/sdl/Makefile.in
+}
+
 show_help()
 {
     echo "Usage: $0 ..args.. platform"
@@ -47,10 +66,10 @@ install_dependencies()
     if [[ "$os" == "Linux" ]]
     then
         sudo apt update
-        sudo apt install -y autoconf automake gettext libtool pkg-config groff
+        sudo apt install -y autoconf automake gettext libtool pkg-config gperf groff meson 
     elif [[ "$os" == "Darwin" ]]
     then
-        brew install autoconf automake gettext libtool pkg-config groff
+        brew install autoconf automake gettext libtool pkg-config gperf groff meson
     else
         echo "Unsupported OS: $os"
         exit 1
