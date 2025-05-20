@@ -118,7 +118,6 @@ do
         #     DOWNLOAD_LIBRARY=$(echo $1 | sed -e 's/^--[A-Za-z]*-//g')
         #     redownload_library "${DOWNLOAD_LIBRARY}"
         #     ;;
-        #     ;;
         --enable-gpl)
             args+=(--enable-gpl)
             ;;
@@ -190,7 +189,10 @@ do
 
         #     redownload_library "${DOWNLOAD_LIBRARY}"
         #     ;;
+<<<<<<< HEAD
         #     ;;
+=======
+>>>>>>> 9649e9e (Update directives)
         # --enable-custom-library-*)
         #     CUSTOM_LIBRARY_OPTION_KEY=$(echo $1 | sed -e 's/^--enable-custom-//g;s/=.*$//g')
         #     CUSTOM_LIBRARY_OPTION_VALUE=$(echo $1 | sed -e 's/^--enable-custom-.*=//g')
@@ -214,11 +216,11 @@ do
 
         #     disable_arch "${DISABLED_ARCH}"
         #     ;;
-        # --target=*)
-        #     TARGET=$(echo $1 | sed -e 's/^--[A-Za-z]*=//g')
+        --target=*)
+            TARGET=$(echo $1 | sed -e 's/^--[A-Za-z]*=//g')
 
-        #     export IOS_MIN_VERSION=${TARGET}
-        #     ;;
+            IOS_MIN_VERSION=${TARGET}
+            ;;
         # --mac-catalyst-target=*)
         #     TARGET=$(echo $1 | sed -e 's/^--[A-Za-z]*-[A-Za-z]*-[A-Za-z]*=//g')
 
