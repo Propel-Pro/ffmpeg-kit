@@ -103,7 +103,7 @@ get_library_source() {
     ;;
   libiconv)
     SOURCE_REPO_URL="https://github.com/Propel-Pro/libiconv"
-    SOURCE_ID="lspector/fix-libiconv=build"
+    SOURCE_ID="lspector/fix-libiconv-build"
     SOURCE_TYPE="COMMIT"
     ;;
   libilbc)

@@ -189,10 +189,6 @@ do
 
         #     redownload_library "${DOWNLOAD_LIBRARY}"
         #     ;;
-<<<<<<< HEAD
-        #     ;;
-=======
->>>>>>> 9649e9e (Update directives)
         # --enable-custom-library-*)
         #     CUSTOM_LIBRARY_OPTION_KEY=$(echo $1 | sed -e 's/^--enable-custom-//g;s/=.*$//g')
         #     CUSTOM_LIBRARY_OPTION_VALUE=$(echo $1 | sed -e 's/^--enable-custom-.*=//g')
