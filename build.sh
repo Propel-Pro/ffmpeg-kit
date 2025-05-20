@@ -3,6 +3,36 @@
 export ANDROID_SDK_ROOT=$HOME/android-r35.0.2
 export ANDROID_NDK_ROOT=$HOME/android-ndk-r26d
 export ANDROID_HOME=$ANDROID_SDK_ROOT
+export PATH=$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/darwin-x86_64/bin:$PATH
+
+get_sdk_name() {
+    echo "iphoneos"
+}
+
+
+export IOS_MIN_VERSION=15.0
+export SDK_PATH=$(echo "$(xcrun --sdk "$(get_sdk_name)" --show-sdk-path 2>>build.log)")
+export SDK_NAME=$(get_sdk_name)
+
+export CFLAGS="-I/usr/local/include $CFLAGS"
+
+# For Apple Silicon Macs:
+# export ACLOCAL_PATH="/opt/homebrew/share/aclocal"
+
+# For Intel Macs:
+export ACLOCAL_PATH="/usr/local/share/aclocal"
+
+export ACLOCAL="aclocal -I $ACLOCAL_PATH"
+
+export GETTEXT_MACRO_DIR=/usr/local/Cellar/gettext/0.25/share/gettext/m4
+
+if [[ $(grep -c "/usr/local/opt/libiconv" /Users/lspector/.bash_profile > /dev/null 2>&1) -eq 0 ]]
+then
+    echo 'export PATH="/usr/local/opt/libiconv/bin:$PATH"' >> /Users/lspector/.bash_profile
+fi
+
+export LDFLAGS="-L/usr/local/opt/libiconv/lib"
+export CPPFLAGS="-I/usr/local/opt/libiconv/include"
 
 show_help()
 {
@@ -58,6 +88,10 @@ do
                 ./android.sh "${args[@]}"
             ;;
         iOS|ios)
+            args+=(--target="${IOS_MIN_VERSION}")
+            xcode_version=$(xcodebuild -version | grep -E '^Xcode ' | awk '{print $2}')
+            echo "export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer" > ~/.xcode.for.ffmpeg.kit.sh
+            chmod +x ~/.xcode.for.ffmpeg.kit.sh
             ./ios.sh "${args[@]}"
             ;;
         --full)
