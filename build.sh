@@ -30,6 +30,13 @@ if [[ $(grep -c "/usr/local/opt/libiconv" /Users/lspector/.bash_profile > /dev/n
 then
     echo 'export PATH="/usr/local/opt/libiconv/bin:$PATH"' >> /Users/lspector/.bash_profile
 fi
+export PATH="/usr/local/opt/libiconv/bin:$PATH"
+
+if [[ $(grep -c "/usr/local/opt/bison" /Users/lspector/.bash_profile > /dev/null 2>&1) -eq 0 ]]
+then
+    echo 'export PATH="/usr/local/opt/bison/bin:$PATH"' >> /Users/lspector/.bash_profile
+fi
+export PATH="/usr/local/opt/bison/bin:$PATH"
 
 export LDFLAGS="-L/usr/local/opt/libiconv/lib"
 export CPPFLAGS="-I/usr/local/opt/libiconv/include"
@@ -40,8 +47,8 @@ export CPPFLAGS="-I/usr/local/opt/libiconv/include"
 # For Intel Macs:
 export ACLOCAL_PATH="/usr/local/share/aclocal"
 
-export CFLAGS="-Wno-incompatible-function-pointer-types $CFLAGS"
-export CXXFLAGS="-Wno-incompatible-function-pointer-types $CXXFLAGS"
+export CFLAGS="-Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration $CFLAGS"
+export CXXFLAGS="-Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration $CXXFLAGS"
 
 # export PERL5LIB=$(which perl)
 # export PERL5LIB=src/openssl/util/perl
@@ -66,10 +73,12 @@ install_dependencies()
     if [[ "$os" == "Linux" ]]
     then
         sudo apt update
-        sudo apt install -y autoconf automake gettext libtool pkg-config gperf groff meson 
+        sudo apt install -y autoconf autogen automake bison gettext gperf groff \
+            gtk-doc libtool meson pkg-config
     elif [[ "$os" == "Darwin" ]]
     then
-        brew install autoconf automake gettext libtool pkg-config gperf groff meson
+        brew install autoconf autogen automake bison gettext gperf groff \
+            gtk-doc libtool meson openssl@3 pkg-config
     else
         echo "Unsupported OS: $os"
         exit 1
@@ -96,6 +105,13 @@ fi
 
 # Ensure we've installed the dependencies needed for this script
 install_dependencies
+
+# Ensure directories exist
+needs_m4_dirs=(giflib libogg expat/expat libvorbis)
+for dir in "${needs_m4_dirs[@]}"
+do
+    mkdir -p "src/$dir/m4"
+done
 
 args=()
 
@@ -387,16 +403,12 @@ do
 
         #     enable_library "${ENABLED_LIBRARY}"
         #     ;;
-        # --disable-lib-*)
-        #     DISABLED_LIB=$(echo $1 | sed -e 's/^--[A-Za-z]*-[A-Za-z]*-//g')
-
-        #     disabled_libraries+=("${DISABLED_LIB}")
-        #     ;;
-        # --disable-*)
-        #     DISABLED_ARCH=$(echo $1 | sed -e 's/^--[A-Za-z]*-//g')
-
-        #     disable_arch "${DISABLED_ARCH}"
-        #     ;;
+        --disable-lib-*)
+            args+=("$1")
+            ;;
+        --disable-*)
+            args+=("$1")
+            ;;
         --target=*)
             TARGET=$(echo $1 | sed -e 's/^--[A-Za-z]*=//g')
 
