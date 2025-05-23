@@ -89,7 +89,7 @@ APP_STL := ${APP_STL}
 
 APP_PLATFORM := android-${API}
 
-APP_CFLAGS := -O3 -DANDROID ${LTS_BUILD_FLAG}${BUILD_DATE} -Wall -Wno-deprecated-declarations -Wno-single-bit-bitfield-constant-conversion -Wno-pointer-sign -Wno-switch -Wno-unused-result -Wno-unused-variable
+APP_CFLAGS := -O3 -DANDROID ${LTS_BUILD_FLAG}${BUILD_DATE} -Wall -Wno-deprecated-declarations -Wno-unknown-warning-option -Wno-single-bit-bitfield-constant-conversion -Wno-pointer-sign -Wno-switch -Wno-unused-result -Wno-unused-variable
 
 APP_LDFLAGS := -Wl,--hash-style=both
 EOF
@@ -315,28 +315,28 @@ get_app_specific_cflags() {
     APP_FLAGS=""
     ;;
   ffmpeg)
-    APP_FLAGS="-Wno-unused-function -Wno-single-bit-bitfield-constant-conversion -DBIONIC_IOCTL_NO_SIGNEDNESS_OVERLOAD"
+    APP_FLAGS="-Wno-unused-function -Wno-unknown-warning-option -Wno-single-bit-bitfield-constant-conversion -DBIONIC_IOCTL_NO_SIGNEDNESS_OVERLOAD"
     ;;
   gnutls)
-    APP_FLAGS="-std=c99 -Wno-unused-function -Wno-single-bit-bitfield-constant-conversion -D_GL_USE_STDLIB_ALLOC=1"
+    APP_FLAGS="-std=c99 -Wno-unused-function -Wno-unknown-warning-option -Wno-single-bit-bitfield-constant-conversion -D_GL_USE_STDLIB_ALLOC=1"
     ;;
   kvazaar)
-    APP_FLAGS="-std=gnu99 -Wno-unused-function -Wno-single-bit-bitfield-constant-conversion"
+    APP_FLAGS="-std=gnu99 -Wno-unused-function -Wno-unknown-warning-option -Wno-single-bit-bitfield-constant-conversion"
     ;;
   openh264)
-    APP_FLAGS="-std=gnu99 -Wno-unused-function -Wno-single-bit-bitfield-constant-conversion -fstack-protector-all"
+    APP_FLAGS="-std=gnu99 -Wno-unused-function -Wno-unknown-warning-option -Wno-single-bit-bitfield-constant-conversion -fstack-protector-all"
     ;;
   rubberband)
-    APP_FLAGS="-std=c99 -Wno-unused-function -Wno-single-bit-bitfield-constant-conversion"
+    APP_FLAGS="-std=c99 -Wno-unused-function -Wno-unknown-warning-option -Wno-single-bit-bitfield-constant-conversion"
     ;;
   libvpx | openssl | shine | srt)
-    APP_FLAGS="-Wno-unused-function -Wno-single-bit-bitfield-constant-conversion"
+    APP_FLAGS="-Wno-unused-function -Wno-unknown-warning-option -Wno-single-bit-bitfield-constant-conversion"
     ;;
   soxr | snappy | libwebp)
-    APP_FLAGS="-std=gnu99 -Wno-unused-function  -Wno-single-bit-bitfield-constant-conversion -DPIC"
+    APP_FLAGS="-std=gnu99 -Wno-unused-function  -Wno-unknown-warning-option -Wno-single-bit-bitfield-constant-conversion -DPIC"
     ;;
   *)
-    APP_FLAGS="-std=c99 -Wno-unused-function -Wno-single-bit-bitfield-constant-conversion"
+    APP_FLAGS="-std=c99 -Wno-unused-function -Wno-unknown-warning-option -Wno-single-bit-bitfield-constant-conversion"
     ;;
   esac
 
@@ -1085,6 +1085,6 @@ build_android_lts_support() {
   LDFLAGS=$(get_ldflags ${LIB_NAME})
 
   # BUILD
-  "${CC}" ${CFLAGS} -Wno-single-bit-bitfield-constant-conversion -Wno-unused-command-line-argument -c "${BASEDIR}"/android/ffmpeg-kit-android-lib/src/main/cpp/android_lts_support.c -o "${BASEDIR}"/android/ffmpeg-kit-android-lib/src/main/cpp/android_lts_support.o ${LDFLAGS} 1>>"${BASEDIR}"/build.log 2>&1
+  "${CC}" ${CFLAGS} -Wno-unknown-warning-option -Wno-single-bit-bitfield-constant-conversion -Wno-unused-command-line-argument -c "${BASEDIR}"/android/ffmpeg-kit-android-lib/src/main/cpp/android_lts_support.c -o "${BASEDIR}"/android/ffmpeg-kit-android-lib/src/main/cpp/android_lts_support.o ${LDFLAGS} 1>>"${BASEDIR}"/build.log 2>&1
   "${AR}" rcs "${BASEDIR}"/android/ffmpeg-kit-android-lib/src/main/cpp/libandroidltssupport.a "${BASEDIR}"/android/ffmpeg-kit-android-lib/src/main/cpp/android_lts_support.o 1>>"${BASEDIR}"/build.log 2>&1
 }

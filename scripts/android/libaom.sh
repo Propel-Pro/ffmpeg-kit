@@ -26,7 +26,24 @@ esac
 mkdir -p "${BUILD_DIR}" || return 1
 cd "${BUILD_DIR}" || return 1
 
+echo "CC: ${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/${TOOLCHAIN}/bin/${CC}"
+echo "CXX: ${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/${TOOLCHAIN}/bin/${CXX}"
+echo "LD: ${LD}"
+echo "AR: ${AR}"
+echo "AS: ${AS}"
+echo "CFLAGS: ${CFLAGS}"
+echo "CXXFLAGS: ${CXXFLAGS}"
+echo "LDFLAGS: ${LDFLAGS}"
+echo "ASM_OPTIONS: ${ASM_OPTIONS}"
+echo "ANDROID_SYSROOT: ${ANDROID_SYSROOT}"
+echo "ANDROID_NDK_ROOT: ${ANDROID_NDK_ROOT}"
+echo "TOOLCHAIN: ${TOOLCHAIN}"
+echo "LIB_INSTALL_PREFIX: ${LIB_INSTALL_PREFIX}"
+echo "LIB_NAME: ${LIB_NAME}"
+
 cmake -Wno-dev \
+  -DCMAKE_C_COMPILER_WORKS=1 \
+  -DCMAKE_CXX_COMPILER_WORKS=1 \
   -DCMAKE_VERBOSE_MAKEFILE=0 \
   -DCONFIG_PIC=1 \
   -DCMAKE_C_FLAGS="${CFLAGS}" \

@@ -47,6 +47,7 @@ overwrite_file "${BASEDIR}"/tools/patch/make/libvpx/configure.sh "${BASEDIR}"/sr
   --extra-cxxflags="${CXXFLAGS}" \
   --as=yasm \
   --log=yes \
+  --disable-werror \
   --enable-libs \
   --enable-install-libs \
   --enable-pic \

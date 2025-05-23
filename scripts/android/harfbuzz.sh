@@ -1,5 +1,9 @@
 #!/bin/bash
 
+export MAKE="gmake"
+
+#   --disable-dependency-tracking
+
 # ALWAYS CLEAN THE PREVIOUS BUILD
 make distclean 2>/dev/null 1>/dev/null
 
@@ -9,6 +13,7 @@ if [[ ! -f "${BASEDIR}"/src/"${LIB_NAME}"/configure ]] || [[ ${RECONF_harfbuzz} 
 fi
 
 ./configure \
+  --disable-dependency-tracking \
   --prefix="${LIB_INSTALL_PREFIX}" \
   --with-pic \
   --with-sysroot="${ANDROID_SYSROOT}" \
