@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
 export ANDROID_SDK_ROOT=$HOME/android-r35.0.2
-export ANDROID_NDK_ROOT=$HOME/android-ndk-r26d
+export ANDROID_NDK_ROOT=$HOME/android-ndk-r25c
 export ANDROID_HOME=$ANDROID_SDK_ROOT
+export NDK_HOME=$ANDROID_NDK_ROOT
+export ANDROID_NDK=$ANDROID_NDK_ROOT
 export PATH=$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/darwin-x86_64/bin:$PATH
 
 get_sdk_name() {
