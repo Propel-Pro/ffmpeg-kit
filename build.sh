@@ -28,17 +28,40 @@ export ACLOCAL="aclocal -I $ACLOCAL_PATH"
 
 export GETTEXT_MACRO_DIR=/usr/local/Cellar/gettext/0.25/share/gettext/m4
 
-if [[ $(grep -c "/usr/local/opt/libiconv" /Users/lspector/.bash_profile > /dev/null 2>&1) -eq 0 ]]
+if [[ $(grep -c "/usr/local/opt/libiconv" $HOME/.bash_profile > /dev/null 2>&1) -eq 0 ]]
 then
-    echo 'export PATH="/usr/local/opt/libiconv/bin:$PATH"' >> /Users/lspector/.bash_profile
+    echo 'export PATH="/usr/local/opt/libiconv/bin:$PATH"' >> $HOME/.bash_profile
 fi
 export PATH="/usr/local/opt/libiconv/bin:$PATH"
 
-if [[ $(grep -c "/usr/local/opt/bison" /Users/lspector/.bash_profile > /dev/null 2>&1) -eq 0 ]]
+if [[ $(grep -c "/usr/local/opt/bison" $HOME/.bash_profile > /dev/null 2>&1) -eq 0 ]]
 then
-    echo 'export PATH="/usr/local/opt/bison/bin:$PATH"' >> /Users/lspector/.bash_profile
+    echo 'export PATH="/usr/local/opt/bison/bin:$PATH"' >> $HOME/.bash_profile
 fi
 export PATH="/usr/local/opt/bison/bin:$PATH"
+
+if [[ $(grep -c "/usr/local/Cellar/gtk-doc" $HOME/.bash_profile > /dev/null 2>&1) -eq 0 ]]
+then
+    echo 'export PATH="/usr/local/Cellar/gtk-doc/1.34.0/bin:$PATH"' >> $HOME/.bash_profile
+fi
+export PATH="/usr/local/Cellar/gtk-doc/1.34.0/bin:$PATH"
+
+if [[ $(grep -c "/usr/local/Cellar/make" $HOME/.bash_profile > /dev/null 2>&1) -eq 0 ]]
+then
+    echo 'export PATH="/usr/local/Cellar/make/4.4.1/bin:$PATH"' >> $HOME/.bash_profile
+fi
+export PATH="/usr/local/Cellar/make/4.4.1/bin:$PATH"
+
+
+# PKG_CONFIG        path to pkg-config utility
+# PKG_CONFIG_PATH   directories to add to pkg-config's search path
+# PKG_CONFIG_LIBDIR path overriding pkg-config's built-in search path
+export PKG_CONFIG=$(which pkg-config)
+# export PKG_CONFIG_PATH=$(which pkg-config)
+# export PKG_CONFIG_LIBDIR=$(which pkg-config)
+echo "PKG_CONFIG: $PKG_CONFIG"
+# echo "PKG_CONFIG_PATH: $PKG_CONFIG_PATH"
+# echo "PKG_CONFIG_LIBDIR: $PKG_CONFIG_LIBDIR"
 
 export LDFLAGS="-L/usr/local/opt/libiconv/lib"
 export CPPFLAGS="-I/usr/local/opt/libiconv/include"
@@ -49,8 +72,8 @@ export CPPFLAGS="-I/usr/local/opt/libiconv/include"
 # For Intel Macs:
 export ACLOCAL_PATH="/usr/local/share/aclocal"
 
-export CFLAGS="-Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration $CFLAGS"
-export CXXFLAGS="-Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration $CXXFLAGS"
+export CFLAGS="-Wno-unknown-warning-option -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration $CFLAGS"
+export CXXFLAGS="-Wno-unknown-warning-option -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration $CXXFLAGS"
 
 # export PERL5LIB=$(which perl)
 # export PERL5LIB=src/openssl/util/perl
