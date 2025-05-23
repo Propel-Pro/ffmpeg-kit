@@ -93,17 +93,22 @@ show_help()
 
 install_dependencies()
 {
+    # autoconf automake libtool pkg-config curl git doxygen nasm cmake gcc gperf texinfo yasm bison autogen wget autopoint meson ninja ragel groff gtk-doc-tools libtasn1
+
     os=$(uname)
     echo "Installing dependencies..."
     if [[ "$os" == "Linux" ]]
     then
         sudo apt update
-        sudo apt install -y autoconf autogen automake bison gettext gperf groff \
-            gtk-doc libtool meson pkg-config
+
+        sudo apt install -y autoconf autogen automake bison curl doxygen gawk git \
+            gettext gperf groff gtk-doc libtool meson pkg-config pkgconf \
+            ragel
     elif [[ "$os" == "Darwin" ]]
     then
-        brew install autoconf autogen automake bison gettext gperf groff \
-            gtk-doc libtool meson openssl@3 pkg-config
+        brew install autoconf autogen automake bison curl doxygen gawk git \
+            gettext gperf groff gtk-doc libtool meson openssl@3 pkg-config pkgconf \
+            ragel
     else
         echo "Unsupported OS: $os"
         exit 1
