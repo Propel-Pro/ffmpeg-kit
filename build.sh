@@ -137,7 +137,7 @@ fi
 install_dependencies
 
 # Ensure directories exist
-needs_m4_dirs=(giflib libogg expat/expat libvorbis)
+needs_m4_dirs=(giflib libogg expat/expat lame/lame libvorbis)
 for dir in "${needs_m4_dirs[@]}"
 do
     mkdir -p "src/$dir/m4"
